@@ -3,7 +3,7 @@
 void myFunc(void);
 
 int myGlobalVar;
-int myVar = 11;
+int myVar1 = 11;
 
 int main()
 {
