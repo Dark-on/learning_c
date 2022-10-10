@@ -3,7 +3,7 @@
 void myFunc(void);
 
 int myGlobalVar;
-int myVar = 11;
+int myVar1 = 11;
 
 int main()
 {
@@ -22,7 +22,7 @@ int main()
     printf("----before block--------------------\n");
     int myVar1 = 10;
     // next line give error cause definition variable of same name in one score
-    //char myVar = 1;
+    //char myVar1 = 1;
     
     int myVar2 = 20;
     
