@@ -1,0 +1,29 @@
+/*
+ * main.c
+ *
+ *  Created on: 20 жовт. 2022 р.
+ *      Author: krps
+ */
+
+#include <stdio.h>
+
+
+int main(void)
+{
+	float num1, num2, num3;
+	printf("\nEnter first number: ");
+	scanf("%f", &num1);
+	printf("\nEnter second number: ");
+	scanf("%f", &num2);
+	printf("\nEnter third number: ");
+	scanf("%f", &num3);
+	printf("\nAverage: %0.2f", (num1 + num2 + num3) / 3);
+
+	while(getchar() != '\n')
+	{
+
+	}
+	getchar();[]
+	return 0;
+
+}

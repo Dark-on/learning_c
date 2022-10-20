@@ -1,0 +1,9 @@
+21:42:17 **** Clean-only build of configuration Debug for project 002Sizeof ****
+make -j4 clean 
+rm -rf ./Startup/startup_stm32l412rbtxp.d ./Startup/startup_stm32l412rbtxp.o
+rm -rf ./Src/main.d ./Src/main.o ./Src/main.su ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf 002Sizeof.elf 002Sizeof.list 002Sizeof.map default.size.stdout
+ 
+
+21:42:17 Build Finished. 0 errors, 0 warnings. (took 283ms)
+
