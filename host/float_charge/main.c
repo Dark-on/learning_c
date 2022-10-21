@@ -23,7 +23,7 @@ int main()
 		//just read the input buffer and do nothing
 	}
 	getchar();
-	return 0;
+	return 1;
 }
 
 

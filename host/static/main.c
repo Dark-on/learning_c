@@ -18,5 +18,5 @@ int main()
     printf("Value of notPrivateData = %d\n", notPrivateData);
     printf("Value of privateData = %d\n", privateData);
 
-    return 0;
+    return 1;
 }

@@ -25,6 +25,6 @@ int main()
 	*pAddress = 65;
 	printf("The value of the variable = %d\n", var);
 
-	return 0;
+	return 1;
 }
 

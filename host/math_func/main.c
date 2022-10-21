@@ -11,5 +11,5 @@ int main()
     printf("1999 * 2999 = %I64d\n", mul(1999, 2999));
     printf("100 / 20 = %0.2f\n", div(100, 20));
     printf("\n\nFinish\n\n");
-    return 0;
+    return 1;
 }

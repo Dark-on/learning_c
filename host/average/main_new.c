@@ -23,6 +23,6 @@ int main(void)
 
 	}
 	getchar();
-	return 0;
+	return 1;
 
 }

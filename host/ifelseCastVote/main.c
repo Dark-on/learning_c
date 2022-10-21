@@ -7,12 +7,17 @@
 
 #include <stdio.h>
 
+
 int main()
 {
-	char c1, c2, c3, c4, c5, c6;
-	printf("\nEnter 6 characters of your choice: ");
-	scanf("%c %c %c %c %c %c", &c1, &c2, &c3, &c4, &c5, &c6);
-	printf("\nASCII codes: %d, %d, %d, %d, %d, %d", c1, c2, c3, c4, c5, c6);
+	int age;
+	printf("Enter your age: ");
+	scanf("%u", &age);
+	if (age < 18){
+		printf("\nSorry. You can't cast a vote.");
+	}else{
+		printf("\nCongratulations! You can cast a vote.");
+	}
 
 	printf("\nPress enter key to exit the application");
 	while(getchar() != '\n')
@@ -20,5 +25,6 @@ int main()
 		//just read the input buffer and do nothing
 	}
 	getchar();
+
 	return 1;
 }
