@@ -31,7 +31,10 @@ int main(){
 	num2 |= (1 << 3) + (1 << 6); // set 4th and 7th bits
 	printf("After setting = %d\n", num1);
 	printf("After setting = %d\n", num2);
-
+	num1 &= ~(0b111 << 3); // clear 4th, 5th and 6th bits
+	num2 &= ~(0b111 << 3); // clear 4th, 5th and 6th bits
+	printf("After clearing = %d\n", num1);
+	printf("After clearing = %d\n", num2);
 
 	wait_for_user_input();
 	return 1;
