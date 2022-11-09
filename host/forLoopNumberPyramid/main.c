@@ -14,12 +14,21 @@ void wait_for_user_input(void);
 
 
 int main(){
-	uint32_t height;
+	int32_t height;
 	printf("Enter the height of pyramid:");
 	scanf("%d", &height);
+
+	if (height < 0){
+		printf("Height should be bigger than 0\n");
+		wait_for_user_input();
+		return 0;
+	}
+
+
+
 	printf("\n");
-	for (uint32_t i = 1; i <= height; i++, printf("\n")){
-		for (uint32_t j = i; j > 0; j--){
+	for (uint16_t i = 1; i <= height; i++, printf("\n")){
+		for (uint16_t j = i; j > 0; j--){
 			printf("%4d\t", j);
 		}
 	}

@@ -3,7 +3,6 @@
  *
  *  Created on: 20 жовт. 2022 р.
  *      Author: krps
-
 	1. Create a char type variable and initialize it to value 100
 	2. Print the address of the above variable.
 	3. Create a pointer variable and store the address of the above variable

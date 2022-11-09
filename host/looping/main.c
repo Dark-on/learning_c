@@ -18,7 +18,7 @@ int main(){
 	while (i <= 10)
 		printf("%d\n", i++);
 
-	// 2. print all even numbers in readed boarders
+	// 2. print all even numbers in inputed boarders
 	int32_t start, end;
 	uint32_t amountA = 0, amountB = 0;
 	printf("Enter boarders (two integer numbers): ");
