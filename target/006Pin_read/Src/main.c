@@ -27,7 +27,7 @@ int main(void)
 	uint32_t *pPortBOutReg = (uint32_t *) 0x48000414;
 	uint32_t *pPortCModeReg = (uint32_t *) 0x48000800;
 	uint32_t *pPortCInpReg = (uint32_t *) 0x48000810;
-	uint8_t data = 0;
+	uint8_t pinStatus = 0;
 
 	// 1. enable the clock
 	// a. for GPIOB peripheral in the AHB2ENR
@@ -45,28 +45,16 @@ int main(void)
 	// a. CLEAR the 26th and 27th bit positions
 	*pPortCModeReg &= ~(0b11 << 26);
 
-
-    /* Loop forever */
 	while(1){
 		// 4. READ 13th bit of the input data register
-		data = (*pPortCInpReg >> 13) & 1;
+		pinStatus = (*pPortCInpReg >> 13) & 1;
 
-		if (data){
-			// 5. SET 13th bit of the output data register to make IO pin-13 as HIGH
+		if (pinStatus){
+			// 5. Turn ON the LED
 			*pPortBOutReg |= (1 << 13);
 		} else {
 			// 6. Turn OFF the LED
 			*pPortBOutReg &= ~(1 << 13);
 		}
-
-//		// introduce small human observable delay
-//		for(uint32_t i = 0; i < 200000; i++);
-//
-//		// 4. Turn OFF the LED
-//		*pPortBOutReg &= ~(1 << 13);
-//
-//		// introduce small human observable delay
-//		for(uint32_t i = 0; i < 200000; i++);
-
-	}
+	} // loop
 }
