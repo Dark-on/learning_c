@@ -22,12 +22,11 @@
 int main(void)
 {
 	// base address RCC:  0x4002 1000
-	uint32_t volatile *const pClkCtrlReg = (uint32_t *) 0x4002104C;
-	uint32_t volatile *const pPortBModeReg = (uint32_t *) 0x48000400;
-	uint32_t volatile *const pPortBOutReg = (uint32_t *) 0x48000414;
-	uint32_t volatile *const pPortCModeReg = (uint32_t *) 0x48000800;
-	uint32_t volatile *const pPortCInpReg = (uint32_t *) 0x48000810;
-	uint8_t pinStatus = 0;
+	uint32_t volatile *const pClkCtrlReg =        (uint32_t *) 0x4002104C;
+	uint32_t volatile *const pPortBModeReg =      (uint32_t *) 0x48000400;
+	uint32_t volatile *const pPortBOutReg =       (uint32_t *) 0x48000414;
+	uint32_t volatile *const pPortCModeReg =      (uint32_t *) 0x48000800;
+	uint32_t const volatile *const pPortCInpReg = (uint32_t *) 0x48000810;
 
 	// 1. enable the clock
 	// a. for GPIOB peripheral in the AHB2ENR
@@ -47,7 +46,7 @@ int main(void)
 
 	while(1){
 		// 4. READ 13th bit of the input data register
-		pinStatus = (uint8_t)((*pPortCInpReg >> 13) & 0x1);
+		uint8_t pinStatus = (uint8_t)((*pPortCInpReg >> 13) & 0x1);
 
 		if (pinStatus){
 			// 5. Turn ON the LED
