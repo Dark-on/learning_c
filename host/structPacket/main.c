@@ -39,14 +39,14 @@ int main(void){
 	packet1.shortAddr =(uint8_t)((data >> 29) & 0b11);
 	packet1.addrMode = (uint8_t)((data >> 31) & 0b1);
 
-	printf("crc       :%X\n", packet1.crc);
-	printf("status    :%X\n", packet1.status);
-	printf("payload   :%X\n", packet1.payload);
-	printf("bat       :%X\n", packet1.bat);
-	printf("sensor    :%X\n", packet1.sensor);
-	printf("longAddr  :%X\n", packet1.longAddr);
-	printf("shortAddr :%X\n", packet1.shortAddr);
-	printf("addrMode  :%X\n", packet1.addrMode);
+	printf("crc       :%#X\n", packet1.crc);
+	printf("status    :%#X\n", packet1.status);
+	printf("payload   :%#X\n", packet1.payload);
+	printf("bat       :%#X\n", packet1.bat);
+	printf("sensor    :%#X\n", packet1.sensor);
+	printf("longAddr  :%#X\n", packet1.longAddr);
+	printf("shortAddr :%#X\n", packet1.shortAddr);
+	printf("addrMode  :%#X\n", packet1.addrMode);
 
 	wait_user_input();
 	return 1;
