@@ -11,14 +11,14 @@
 
 
 typedef struct{
-	uint8_t crc;
-	uint8_t status;
-	uint16_t payload;
-	uint8_t bat;
-	uint8_t sensor;
-	uint8_t longAddr;
-	uint8_t shortAddr;
-	uint8_t addrMode;
+	uint32_t crc      :2;
+	uint32_t status   :1;
+	uint32_t payload :12;
+	uint32_t bat      :3;
+	uint32_t sensor   :3;
+	uint32_t longAddr :8;
+	uint32_t shortAddr:2;
+	uint32_t addrMode :1;
 }Packet_t;
 
 
@@ -47,7 +47,7 @@ int main(void){
 	printf("longAddr  :%#X\n", packet1.longAddr);
 	printf("shortAddr :%#X\n", packet1.shortAddr);
 	printf("addrMode  :%#X\n", packet1.addrMode);
-
+	printf("Size = %u", sizeof(packet1));
 	wait_user_input();
 	return 1;
 }
