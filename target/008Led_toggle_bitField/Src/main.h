@@ -1,14 +1,7 @@
-/*
- * main.h
- *
- *  Created on: 2 груд. 2022 р.
- *      Author: krps
- */
-
 #ifndef MAIN_H_
 #define MAIN_H_
 
-struct RCC_AHB2_ENR{
+typedef struct {
 	uint32_t gpioa_en :1;
 	uint32_t gpiob_en :1;
 	uint32_t gpioc_en :1;
@@ -22,9 +15,9 @@ struct RCC_AHB2_ENR{
 	uint32_t aes_en   :1;
 	uint32_t reserved2 :1;
 	uint32_t rng_en   :1;
-};
+}RCC_AHB2ENR_t;
 
-struct GPIOx_REGS{
+typedef struct {
 	struct{
 		uint32_t pin0 :2;
 		uint32_t pin1 :2;
@@ -39,7 +32,7 @@ struct GPIOx_REGS{
 		uint32_t pin10 :2;
 		uint32_t pin11 :2;
 		uint32_t pin12 :2;
-		uint32_t volatile pin13 :2;
+		uint32_t pin13 :2;
 		uint32_t pin14 :2;
 		uint32_t pin15 :2;
 	}mode;
@@ -61,7 +54,7 @@ struct GPIOx_REGS{
 		uint32_t pin10 :1;
 		uint32_t pin11 :1;
 		uint32_t pin12 :1;
-		uint32_t volatile pin13 :1;
+		uint32_t pin13 :1;
 		uint32_t pin14 :1;
 		uint32_t pin15 :1;
 	}output_data;
@@ -70,6 +63,6 @@ struct GPIOx_REGS{
 	uint32_t afrl;
 	uint32_t afrh;
 	uint32_t bit_reset;
-};
+}GPIOx_REGS_t;
 
 #endif /* MAIN_H_ */
