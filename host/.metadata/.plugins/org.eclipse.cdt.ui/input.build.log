@@ -1,5 +1,0 @@
-15:13:05 **** Clean-only build of configuration Debug for project input ****
-rm -rf main_new.o main_new.d input.exe 
-
-15:13:05 Build Finished. 0 errors, 0 warnings. (took 183ms)
-

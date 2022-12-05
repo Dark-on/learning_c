@@ -52,9 +52,18 @@ Mkfile.old
 dkms.conf
 
 # Eclipse
-.metadata
-.settings
+.metadata/
+.settings/
 [Rr]elease
 [Dd]ebug
 .launch
-.log
+
+*.project
+*.cproject
+*.ld
+
+RemoteSystemsTempFiles/
+*.chm
+*.settings.xml     
+*.xml
+*.launch
