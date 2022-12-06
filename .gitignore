@@ -67,3 +67,4 @@ RemoteSystemsTempFiles/
 *.settings.xml     
 *.xml
 *.launch
+*.cfg
