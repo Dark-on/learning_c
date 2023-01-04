@@ -2,16 +2,21 @@
 #include <stdint.h>
 
 
-void array_print(int const * const pArray, uint32_t const arrayLen);
+void array_print(int const * const pArray, int32_t const arrayLen);
 void wait_user_input(void);
-void array_scan(int *const pArray, uint32_t const arrayLen);
+void array_scan(int *const pArray, int32_t const arrayLen);
 
 
 int main(void){
-	uint32_t lenArray1, lenArray2;
+	int32_t lenArray1, lenArray2;
 	printf("Array swapping program\n");
 	printf("Enter amount of elements of Array-1 and Array-2:");
-	scanf("%u %u", &lenArray1, &lenArray2);
+	scanf("%d %d", &lenArray1, &lenArray2);
+	if ((lenArray1 < 0) || (lenArray2 < 0)){
+		printf("Amount of elements can't be negative\n");
+		wait_user_input();
+		return 0;
+	}
 
 	int array1[lenArray1];
 	int array2[lenArray2];
@@ -36,11 +41,11 @@ int main(void){
 	array_print(array2, lenArray2);
 
 	wait_user_input();
-	return 1;
+	return 0;
 }
 
 
-void array_scan(int *const pArray, uint32_t const arrayLen){
+void array_scan(int *const pArray, int32_t const arrayLen){
 	uint32_t static arrayNumber = 1;
 	for(uint8_t i = 0; i < arrayLen; i++){
 		printf("\nEnter element %u of Array-%u:", i, arrayNumber);
@@ -50,7 +55,7 @@ void array_scan(int *const pArray, uint32_t const arrayLen){
 }
 
 
-void array_print(int const * const pArray, uint32_t const arrayLen){
+void array_print(int const * const pArray, int32_t const arrayLen){
 	for(uint8_t i = 0; i < arrayLen; i++){
 		printf("%d\t", pArray[i]);
 	}
