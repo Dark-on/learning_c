@@ -65,24 +65,25 @@ int main(void){
 }
 
 void display_all(STUDENT_INFO_t const * pStudent, int const maxStudents){
-	int isntAnyRecords = 0;
-	printf("**********************");
-	for(unsigned int i = 0; i < maxStudents; i++, pStudent++){
-		if (pStudent->rollNumber){
-			printf("\nrollNumber  : %d\n", pStudent->rollNumber);
+	int isRecords = 0;
+
+	for(unsigned int i = 0; i < maxStudents; i++){
+		if (pStudent[i].rollNumber){
+			isRecords = 1;
+
+			printf("**********************\n");
+			printf("rollNumber      : %d\n", pStudent->rollNumber);
 			printf("studentSemister : %d\n", pStudent->semister);
 			printf("studentDOB      : %s\n", pStudent->dob);
 			printf("studentBranch   : %s\n", pStudent->branch);
 			printf("studentName     : %s\n", pStudent->name);
-		}else{
-			isntAnyRecords++;
-		}
+			printf("**********************\n");
 	}
-	if (isntAnyRecords == maxStudents){
+	if (!isRecords){
 		printf("No records found");
 	}
-	printf("**********************\n");
 }
+
 
 void add_record(
 		STUDENT_INFO_t * const pStudents,
@@ -152,19 +153,6 @@ void delete_record(STUDENT_INFO_t * const pStudents, int const maxStudents){
 		printf("Record not found\n");
 		return;
 	}
-
 	/*Empty structure*/
-	pStudents[cellIndex].rollNumber = 0;
-	pStudents[cellIndex].semister = 0;
-
-	for(unsigned int i = 0; i < strlen(pStudents[cellIndex].dob); i++)
-	{
-		(pStudents[cellIndex].dob)[i]    = 0;
-	}
-	for(unsigned int i = 0; i < strlen(pStudents[cellIndex].branch); i++){
-		(pStudents[cellIndex].branch)[i] = 0;
-	}
-	for(unsigned int i = 0; i < strlen(pStudents[cellIndex].name); i++){
-		(pStudents[cellIndex].name)[i]   = 0;
-	}
+	memset(&pStudents[cellIndex], 0, sizeof(STUDENT_INFO_t));
 }
