@@ -32,6 +32,7 @@ STUDENT_INFO_t students[MAX_STUDENTS];
 
 int main(void){
 	printf("Student record management program\n");
+
 	int option, run = 1;
 	while (run){
 		printf("Display all records -->1\n"
@@ -46,6 +47,7 @@ int main(void){
 				display_all(students, MAX_STUDENTS);
 				break;
 			case 2:
+				printf("Add a new record\n");
 				add_record(students, MAX_STUDENTS, 0);
 				break;
 			case 3:
@@ -54,6 +56,9 @@ int main(void){
 				break;
 			case 0:
 				run = 0;
+				break;
+			default:
+				printf("Unknown option\n");
 		} // switch
 	} // while
 	return 0;
@@ -82,9 +87,8 @@ void display_all(STUDENT_INFO_t const * pStudent, int const maxStudents){
 void add_record(
 		STUDENT_INFO_t * const pStudents,
 		int const maxStudents){
-	printf("Add a new record\n");
-	printf("Enter the rollNumber : ");
 
+	printf("Enter the rollNumber : ");
 	int rollNumberBuffer = 0;
 	scanf("%d", &rollNumberBuffer);
 
@@ -94,12 +98,13 @@ void add_record(
 				"Record adding failed\n");
 		return;
 	}
-
+	/*Find free space in array for record*/
 	int freeCellIndex = findCellIndex(pStudents, maxStudents, 0);
 	if (freeCellIndex < 0){
 		printf("No space to add a new record\n");
 		return;
 	}
+	/*Scan and fill structure fields*/
 	pStudents[freeCellIndex].rollNumber = rollNumberBuffer;
 
 	printf("Enter the studentSemister : ");
@@ -124,55 +129,56 @@ int findCellIndex(
 		STUDENT_INFO_t * const pStudents,
 		int const maxStudents,
 		int const rollNumber){
-
+	/*Find index of structure in array by given roll number of record*/
 	for(unsigned int i = 0; i < maxStudents; i++){
 		if (pStudents[i].rollNumber == rollNumber){
 			return i;
 		}
 	}
+	/*If did not find*/
 	return -1;
 
 }
 
 void delete_record(STUDENT_INFO_t * const pStudents, int const maxStudents){
-
+	/*Scan roll number*/
 	int rollNumber;
 	printf("Enter the roll number of the student: ");
 	scanf("%d", &rollNumber);
 
+	/*Find index of array by roll number of record*/
 	int cellIndex = findCellIndex(pStudents, maxStudents, rollNumber);
-	if (0 <= cellIndex && cellIndex < maxStudents){
-		pStudents[cellIndex].rollNumber = 0;
-		pStudents[cellIndex].semister = 0;
-
-//
-//		for(unsigned int i = 0; i < strlen(pStudents[cellIndex].name); i++){
-//			(pStudents[cellIndex].name)[i] = 0;
-//			if (i < strlen(pStudents[cellIndex].branch)){
-//				(pStudents[cellIndex].branch)[i] = 0;
-//				if (i < strlen(pStudents[cellIndex].dob)){
-//					(pStudents[cellIndex].dob)[i] = 0;
-//				}
-//			}
-//		}
-
-
-		unsigned int i;
-		for(i = 0; i < strlen(pStudents[cellIndex].dob); i++)
-		{
-		    (pStudents[cellIndex].name)[i]   = 0;
-		    (pStudents[cellIndex].branch)[i] = 0;
-		    (pStudents[cellIndex].dob)[i]    = 0;
-		}
-		for(i = strlen(pStudents[cellIndex].dob); i < strlen(pStudents[cellIndex].branch); i++){
-			(pStudents[cellIndex].name)[i]   = 0;
-			(pStudents[cellIndex].branch)[i] = 0;
-		}
-		for(i = strlen(pStudents[cellIndex].branch); i < strlen(pStudents[cellIndex].name); i++){
-			(pStudents[cellIndex].name)[i]   = 0;
-		}
-
-	}else{
+	if (cellIndex <= 0){
 		printf("Record not found\n");
+		return;
 	}
+	/*Empty structure*/
+	pStudents[cellIndex].rollNumber = 0;
+	pStudents[cellIndex].semister = 0;
+
+	unsigned int i;
+	for(i = 0; i < strlen(pStudents[cellIndex].dob); i++)
+	{
+		(pStudents[cellIndex].name)[i]   = 0;
+		(pStudents[cellIndex].branch)[i] = 0;
+		(pStudents[cellIndex].dob)[i]    = 0;
+	}
+	for(i = strlen(pStudents[cellIndex].dob); i < strlen(pStudents[cellIndex].branch); i++){
+		(pStudents[cellIndex].name)[i]   = 0;
+		(pStudents[cellIndex].branch)[i] = 0;
+	}
+	for(i = strlen(pStudents[cellIndex].branch); i < strlen(pStudents[cellIndex].name); i++){
+		(pStudents[cellIndex].name)[i]   = 0;
+	}
+
+	// // second method to empty structures strings (name, branch, dob)
+	//		for(unsigned int i = 0; i < strlen(pStudents[cellIndex].name); i++){
+	//			(pStudents[cellIndex].name)[i] = 0;
+	//			if (i < strlen(pStudents[cellIndex].branch)){
+	//				(pStudents[cellIndex].branch)[i] = 0;
+	//				if (i < strlen(pStudents[cellIndex].dob)){
+	//					(pStudents[cellIndex].dob)[i] = 0;
+	//				}
+	//			}
+	//		}
 }
