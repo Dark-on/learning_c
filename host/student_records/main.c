@@ -152,33 +152,19 @@ void delete_record(STUDENT_INFO_t * const pStudents, int const maxStudents){
 		printf("Record not found\n");
 		return;
 	}
+
 	/*Empty structure*/
 	pStudents[cellIndex].rollNumber = 0;
 	pStudents[cellIndex].semister = 0;
 
-	unsigned int i;
-	for(i = 0; i < strlen(pStudents[cellIndex].dob); i++)
+	for(unsigned int i = 0; i < strlen(pStudents[cellIndex].dob); i++)
 	{
-		(pStudents[cellIndex].name)[i]   = 0;
-		(pStudents[cellIndex].branch)[i] = 0;
 		(pStudents[cellIndex].dob)[i]    = 0;
 	}
-	for(i = strlen(pStudents[cellIndex].dob); i < strlen(pStudents[cellIndex].branch); i++){
-		(pStudents[cellIndex].name)[i]   = 0;
+	for(unsigned int i = 0; i < strlen(pStudents[cellIndex].branch); i++){
 		(pStudents[cellIndex].branch)[i] = 0;
 	}
-	for(i = strlen(pStudents[cellIndex].branch); i < strlen(pStudents[cellIndex].name); i++){
+	for(unsigned int i = 0; i < strlen(pStudents[cellIndex].name); i++){
 		(pStudents[cellIndex].name)[i]   = 0;
 	}
-
-	// // second method to empty structures strings (name, branch, dob)
-	//		for(unsigned int i = 0; i < strlen(pStudents[cellIndex].name); i++){
-	//			(pStudents[cellIndex].name)[i] = 0;
-	//			if (i < strlen(pStudents[cellIndex].branch)){
-	//				(pStudents[cellIndex].branch)[i] = 0;
-	//				if (i < strlen(pStudents[cellIndex].dob)){
-	//					(pStudents[cellIndex].dob)[i] = 0;
-	//				}
-	//			}
-	//		}
 }
